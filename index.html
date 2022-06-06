@@ -4,18 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perros</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Perritos</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Perritos bonitos aleatorios</h1>
-        <img id="img1" alt="perrito">
-        <img id="img2" alt="perrito">
-        <img id="img3" alt="perrito">
-        <button>Presiona aquí para ver otro perro</button>
-        <script src="./main.js"></script>
-    </div>
+    <h1>Perritos app</h1>
 
+    <span id="error"></span>
+    
+    <section id="randonDogs">
+        <h2>Perritos aleatorios</h2>
+
+        <article>
+            <img id="img1" alt="perrito">
+            <button id="btn1" onclick="saveFavouritesDogs()">Guardar perrito en favoritos</button>
+        </article>
+        
+        <article>
+            <img id="img2" alt="perrito">
+            <button id="btn2" onclick="saveFavouritesDogs()">Guardar perrito en favoritos</button>
+        </article>
+
+        <button id="random">Presiona aquí para ver otro perro</button>
+    </section>
+    
+    <section id="favoritesDogs">
+        <h2>Perritos favoritos</h2>
+       
+        <article>
+            <img id="img1" alt="perrito">
+            <button>Sacar al perrito de favoritos</button>
+        </article>
+    </section>
+
+    <script src="./main.js"></script>
 </body>
 </html>
