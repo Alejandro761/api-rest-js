@@ -2,6 +2,7 @@ const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=2'; //l
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites';
 const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
 const spanError = document.getElementById('error');
+const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload';
 
 // const URLmaterial = 'https://api.mpds.io/v0/download/p?q=P50042118-3&fmt=json&sid=null&ed=0';
 
@@ -112,6 +113,32 @@ const deleteFavouriteDog = async (id) => {
     } else {
         console.log('Eliminado.');
         loadFavouritesDogs();
+    }
+}
+
+const uploadDogPhoto = async () => {
+    const form = document.getElementById('uploadingForm');
+    const formData = new FormData(form);
+    console.log(formData.get('file'));
+
+    const res = await fetch(API_URL_UPLOAD, {
+        method: 'POST',
+        headers: {
+            // 'Content-Type': 'multipart/formData',
+            'X-API-KEY': '28395ef1-601a-475d-9561-5532a98eacbc',
+        },
+        body: formData,
+    });
+
+    const data = await res.json();
+
+    if(res.status !== 200){
+        spanError.innerHTML = 'Hubo un error: ' + res.status + data.message; 
+    } else {
+        console.log('Foto subido.');
+        console.log({data})
+        console.log(data.url)
+        saveFavouriteDog(data.id);
     }
 }
 
